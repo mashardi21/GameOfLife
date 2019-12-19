@@ -7,6 +7,10 @@
 #IncludeRegexTransform: 
 
 /home/hippo/Development/GameOfLife/include/board.hpp
+iostream
+-
+string
+-
 vector
 -
 random

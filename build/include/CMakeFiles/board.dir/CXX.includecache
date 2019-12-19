@@ -11,6 +11,10 @@ board.hpp
 /home/hippo/Development/GameOfLife/include/board.hpp
 
 /home/hippo/Development/GameOfLife/include/board.hpp
+iostream
+-
+string
+-
 vector
 -
 random
