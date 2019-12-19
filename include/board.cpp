@@ -78,27 +78,91 @@ void board::nextBoardState() {
         for (int x = 0; x < boardState[0].size(); x++) {
             numLiveNeighbors = 0;
 
-            if (!(x == 0)) {
-                if (temp[y][x - 1] == 1) {
-                    numLiveNeighbors++;
-                }
-            }
+            if (x == 0) {
+                if(y == 0) {
+                    if (temp[y + 1][x] == 1) numLiveNeighbors++;
 
-            if (!(x == boardState[0].size() - 1)) {
-                if (temp[y][x + 1] == 1) {
-                    numLiveNeighbors++;
-                }
-            }
+                    if (temp[y + 1][x + 1] == 1) numLiveNeighbors++;
 
-            if (!(y == 0)) {
-                if (temp[y - 1][x] == 1) {
-                    numLiveNeighbors++;
-                }
-            }
+                    if (temp[y][x + 1]) numLiveNeighbors++;
+                } else if (y == boardState.size() - 1) {
+                    if (temp[y][x + 1]) numLiveNeighbors++;
 
-            if (!(y == boardState.size() - 1)) {
-                if (temp[y + 1][x] == 1) {
-                    numLiveNeighbors++;
+                    if (temp[y - 1][x + 1] == 1) numLiveNeighbors++;
+
+                    if (temp[y - 1][x]) numLiveNeighbors++;
+                } else {
+                    if (temp[y + 1][x] == 1) numLiveNeighbors++;
+
+                    if (temp[y + 1][x + 1] == 1) numLiveNeighbors++;
+
+                    if (temp[y][x + 1]) numLiveNeighbors++;
+
+                    if (temp[y - 1][x + 1] == 1) numLiveNeighbors++;
+
+                    if (temp[y - 1][x]) numLiveNeighbors++;
+                }
+            } else if (x == boardState[0].size() - 1) {
+                if(y == 0) {
+                    if (temp[y + 1][x] == 1) numLiveNeighbors++;
+
+                    if (temp[y + 1][x - 1] == 1) numLiveNeighbors++;
+
+                    if (temp[y][x - 1]) numLiveNeighbors++;
+                } else if (y == boardState.size() - 1) {
+                    if (temp[y][x - 1]) numLiveNeighbors++;
+
+                    if (temp[y - 1][x - 1] == 1) numLiveNeighbors++;
+
+                    if (temp[y - 1][x]) numLiveNeighbors++;
+                } else {
+                    if (temp[y + 1][x] == 1) numLiveNeighbors++;
+
+                    if (temp[y + 1][x - 1] == 1) numLiveNeighbors++;
+
+                    if (temp[y][x - 1]) numLiveNeighbors++;
+
+                    if (temp[y - 1][x - 1] == 1) numLiveNeighbors++;
+
+                    if (temp[y - 1][x]) numLiveNeighbors++;
+                }
+            } else {
+                if(y == 0) {
+                    if (temp[y][x - 1] == 1) numLiveNeighbors++;
+
+                    if (temp[y + 1][x - 1] == 1) numLiveNeighbors++;
+
+                    if (temp[y + 1][x]) numLiveNeighbors++;
+
+                    if (temp[y + 1][x + 1] == 1) numLiveNeighbors++;
+
+                    if (temp[y][x + 1]) numLiveNeighbors++;
+                } else if (y == boardState.size() - 1) {
+                    if (temp[y][x - 1] == 1) numLiveNeighbors++;
+
+                    if (temp[y - 1][x - 1] == 1) numLiveNeighbors++;
+
+                    if (temp[y - 1][x]) numLiveNeighbors++;
+
+                    if (temp[y - 1][x + 1] == 1) numLiveNeighbors++;
+
+                    if (temp[y][x + 1]) numLiveNeighbors++;
+                } else {
+                    if (temp[y][x - 1] == 1) numLiveNeighbors++;
+
+                    if (temp[y - 1][x - 1] == 1) numLiveNeighbors++;
+
+                    if (temp[y - 1][x] == 1) numLiveNeighbors++;
+
+                    if (temp[y - 1][x + 1] == 1) numLiveNeighbors++;
+
+                    if (temp[y][x + 1] == 1) numLiveNeighbors++;
+
+                    if (temp[y + 1][x + 1] == 1) numLiveNeighbors++;
+
+                    if (temp[y + 1][x] == 1) numLiveNeighbors++;
+
+                    if (temp[y + 1][x - 1] == 1) numLiveNeighbors++;
                 }
             }
 
