@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/hippo/Development/GameOfLife/include/board.cpp
+board.hpp
+/home/hippo/Development/GameOfLife/include/board.hpp
+
+/home/hippo/Development/GameOfLife/include/board.hpp
+vector
+-
+

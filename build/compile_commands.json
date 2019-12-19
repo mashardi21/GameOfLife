@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/hippo/Development/GameOfLife/build/src",
+  "command": "/usr/bin/g++   -I/home/hippo/Development/GameOfLife/include  -g   -o CMakeFiles/GameOfLife.dir/main.cpp.o -c /home/hippo/Development/GameOfLife/src/main.cpp",
+  "file": "/home/hippo/Development/GameOfLife/src/main.cpp"
+},
+{
+  "directory": "/home/hippo/Development/GameOfLife/build/include",
+  "command": "/usr/bin/g++   -I/home/hippo/Development/GameOfLife/include  -g   -o CMakeFiles/board.dir/board.cpp.o -c /home/hippo/Development/GameOfLife/include/board.cpp",
+  "file": "/home/hippo/Development/GameOfLife/include/board.cpp"
+}
+]
