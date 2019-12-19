@@ -4,17 +4,6 @@ board::board() {
     deadBoard(5, 5);
 }
 
-board::board(int width, int height, int state) {
-    switch (state) {
-    case 0:
-        deadBoard(width, height);
-    case 1:
-        randBoard(width, height);
-    default:
-        deadBoard(width, height);
-    }
-}
-
 void board::deadBoard(int width, int height) {
     boardState.clear();
 
@@ -44,10 +33,10 @@ void board::randBoard(int width, int height) {
 }
 
 void board::render() {
-    int dispWidth = boardState[0].size() + 2;
+    int dispWidth = boardState[0].size();
     int dispHeight = boardState.size();
 
-    clearScreen();
+    //clearScreen();
 
     for (int i = 0; i < dispWidth - 1; i++) {
         std::cout << "-";
@@ -56,16 +45,16 @@ void board::render() {
     std::cout << std::endl;
 
     for (int y = 0; y < dispHeight; y++) {
+        std::cout << "|";
+
         for (int x = 0; x < dispWidth; x++) {
-            if (x == 0 || x == dispWidth - 1) {
-                std::cout << "|";
-            } else if (boardState[y][x] == 0) {
+            if (boardState[y][x] == 0) {
                 std::cout << " ";
             } else if (boardState[y][x] == 1) {
                 std::cout << "#";
             }
         }
-        std::cout << std::endl;
+        std::cout << "|" << std::endl;
     }
 
     for (int i = 0; i < dispWidth - 1; i++) {
@@ -73,6 +62,61 @@ void board::render() {
     }
 
     std::cout << std::endl;
+}
+
+void board::nextBoardState() {
+    // Rules:
+    // 1. If a live cell has 0 or 1 live neighbors, it dies
+    // 2. If a live cell has more than 3 live neighbors, it dies
+    // 3. If a live cell has 2 or 3 live neighbors, it stays alive
+    // 4. If a dead cell has exactly 3 live neighbors, it becomes alive
+
+    int numLiveNeighbors = 0;
+    std::vector<std::vector<int>> temp = boardState;
+
+    for (int y = 0; y < boardState.size(); y++) {
+        for (int x = 0; x < boardState[0].size(); x++) {
+            numLiveNeighbors = 0;
+
+            if (!(x == 0)) {
+                if (temp[y][x - 1] == 1) {
+                    numLiveNeighbors++;
+                }
+            }
+
+            if (!(x == boardState[0].size() - 1)) {
+                if (temp[y][x + 1] == 1) {
+                    numLiveNeighbors++;
+                }
+            }
+
+            if (!(y == 0)) {
+                if (temp[y - 1][x] == 1) {
+                    numLiveNeighbors++;
+                }
+            }
+
+            if (!(y == boardState.size() - 1)) {
+                if (temp[y + 1][x] == 1) {
+                    numLiveNeighbors++;
+                }
+            }
+
+            if (boardState[y][x] == 0) {
+                if (numLiveNeighbors == 3) {
+                    boardState[y][x] = 1;
+                } else {
+                    boardState[y][x] = 0;
+                }
+            } else {
+                if (numLiveNeighbors < 2 || numLiveNeighbors > 3) {
+                    boardState[y][x] = 0;
+                } else {
+                    boardState[y][x] = 1;
+                }
+            }
+        }
+    }
 }
 
 // I'm not using ncurses because I plan to switch to a graphical implementation in the future

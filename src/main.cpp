@@ -5,7 +5,13 @@
 int main() {
     board testBoard;
 
-    testBoard.randBoard(6, 5);
+    testBoard.randBoard(3, 3);
+
+    testBoard.render();
+
+    std::cout << std::endl << std::endl;
+
+    testBoard.nextBoardState();
 
     testBoard.render();
 }
