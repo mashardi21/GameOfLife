@@ -19,6 +19,10 @@ random
 /home/hippo/Development/GameOfLife/src/main.cpp
 iostream
 -
+thread
+-
+future
+-
 vector
 -
 ../include/board.hpp
