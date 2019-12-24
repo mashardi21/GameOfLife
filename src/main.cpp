@@ -17,17 +17,62 @@
 */
 
 #include <iostream>
-#include <thread>
-#include <future>
+#include <time.h>
 #include <vector>
+#include "ncurses.h"
 #include "../include/board.hpp"
 
-int main() {
-    board gameBoard;
-    gameBoard.randBoard(20, 20);
+void __init__() {
+    initscr();
+    cbreak();
+    curs_set(0);
+    nodelay(stdscr, true);
+    keypad(stdscr, true);
+}
 
-    while (true) {
-        gameBoard.render();
+WINDOW* createWindow(int width, int height, int startX, int startY) {
+    WINDOW *localWindow = newwin(height, width, startY, startX);
+    box(localWindow, 0, 0);
+
+    return localWindow;
+}
+
+int main() {
+
+    int width, height, startX, startY, ch, currentCell;
+    char quitButton = 'q';
+    board gameBoard;
+
+    __init__();
+
+    width = COLS - 6;
+    height = LINES - 4;
+    startX = (COLS - width) / 2;
+    startY = (LINES - height) / 2;
+
+    WINDOW *myWin = createWindow(width, height, startX, startY);
+    gameBoard.randBoard(width - 2, height - 2);
+
+    mvprintw(height + 2, 3, "Exit: q");
+    refresh();
+
+    while ((ch = getch()) != (int)quitButton) {
+        for(int y = 1; y < height - 1; y++) {
+            for (int x = 1; x < width - 1; x++) {
+                currentCell = gameBoard.getAlive(x - 1, y - 1);
+                
+                if(currentCell == 1) {
+                    mvwprintw(myWin, y, x, "*");
+                } else {
+                    mvwprintw(myWin, y, x, " ");
+                }
+            }
+        }
+        wrefresh(myWin);
+        refresh();
         gameBoard.nextBoardState();
+        nanosleep((const struct timespec[]){0, (1000000000L / 60)}, NULL);
     }
+
+    endwin();
 }

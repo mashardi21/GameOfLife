@@ -50,36 +50,8 @@ void board::randBoard(int width, int height) {
     }
 }
 
-void board::render() {
-    int dispWidth = boardState[0].size();
-    int dispHeight = boardState.size();
-
-    //clearScreen();
-
-    for (int i = 0; i < dispWidth + 2; i++) {
-        std::cout << "-";
-    }
-
-    std::cout << std::endl;
-
-    for (int y = 0; y < dispHeight; y++) {
-        std::cout << "|";
-
-        for (int x = 0; x < dispWidth; x++) {
-            if (boardState[y][x] == 0) {
-                std::cout << " ";
-            } else if (boardState[y][x] == 1) {
-                std::cout << "#";
-            }
-        }
-        std::cout << "|" << std::endl;
-    }
-
-    for (int i = 0; i < dispWidth + 2; i++) {
-        std::cout << "-";
-    }
-
-    std::cout << std::endl;
+int board::getAlive(int x, int y) {
+    return boardState[y][x];
 }
 
 void board::nextBoardState() {
@@ -199,10 +171,4 @@ void board::nextBoardState() {
             }
         }
     }
-}
-
-// I'm not using ncurses because I plan to switch to a graphical implementation in the future
-// This implementation of clearScreen is temporary
-void board::clearScreen() {
-    std::cout << std::string(30, '\n');
 }

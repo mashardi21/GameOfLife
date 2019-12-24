@@ -19,12 +19,12 @@ random
 /home/hippo/Development/GameOfLife/src/main.cpp
 iostream
 -
-thread
--
-future
+time.h
 -
 vector
 -
+ncurses.h
+/home/hippo/Development/GameOfLife/src/ncurses.h
 ../include/board.hpp
 /home/hippo/Development/GameOfLife/include/board.hpp
 

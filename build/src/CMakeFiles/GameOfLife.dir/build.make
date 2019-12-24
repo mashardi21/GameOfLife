@@ -80,6 +80,8 @@ GameOfLife_EXTERNAL_OBJECTS =
 src/GameOfLife: src/CMakeFiles/GameOfLife.dir/main.cpp.o
 src/GameOfLife: src/CMakeFiles/GameOfLife.dir/build.make
 src/GameOfLife: include/libboard.a
+src/GameOfLife: /usr/lib/libcurses.so
+src/GameOfLife: /usr/lib/libform.so
 src/GameOfLife: src/CMakeFiles/GameOfLife.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/hippo/Development/GameOfLife/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable GameOfLife"
 	cd /home/hippo/Development/GameOfLife/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/GameOfLife.dir/link.txt --verbose=$(VERBOSE)

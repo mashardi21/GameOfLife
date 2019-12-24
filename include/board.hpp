@@ -31,9 +31,8 @@ public:
     board();
     void deadBoard(int width, int height);
     void randBoard(int width, int height);
-    void render();
+    int getAlive(int x, int y);
     void nextBoardState();
-    void clearScreen();
 };
 
 #endif
